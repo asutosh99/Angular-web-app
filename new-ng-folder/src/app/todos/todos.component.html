@@ -1,0 +1,18 @@
+@if(todoIteams().length===0){
+<p>Loading...</p>
+}
+<form>
+ <input type="text" name="searchInput"  [(ngModel)]="searchInput">
+</form>
+
+@for (todo of todoIteams() | filterTodos:searchInput(); track todo.id) {
+   
+      <!-- <input id=`app-${todo.id}` type="checkbox" [value]=todo.completed/>
+      <label>{{todo.title}}</label> -->
+      <app-todo-items (inputToggle)="updateTodos($event)" [todoIteams]='todo'/>
+ 
+   
+}
+  
+   
+
